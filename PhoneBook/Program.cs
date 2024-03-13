@@ -8,41 +8,54 @@ while (isAppRunning)
         new SelectionPrompt<MenuOptions>()
         .Title("What would you like to do?")
         .AddChoices(
-            MenuOptions.AddProduct,
-            MenuOptions.DeleteProduct,
-            MenuOptions.UpdateProduct,
-            MenuOptions.ViewAllProducts,
-            MenuOptions.ViewProduct));
+            MenuOptions.AddContact,
+            MenuOptions.DeleteContact,
+            MenuOptions.UpdateContact,
+            MenuOptions.ViewContact,
+            MenuOptions.ViewAllContacts,
+            MenuOptions.Quit));          
 
     switch (option)
     {
-        case MenuOptions.AddProduct:
-            ProductController.AddProduct();
+        case MenuOptions.AddContact:
+            ContactServce.AddContact();
             break;
-        case MenuOptions.DeleteProduct:
-            ProductController.DeleteProduct();
-            break;
-
-        case MenuOptions.UpdateProduct:
-            ProductController.UpdateProduct();
+        case MenuOptions.DeleteContact:
+            ContactServce.DeleteContact();
             break;
 
-        case MenuOptions.ViewAllProducts:
-            ProductController.ViewAllProducts();
+        case MenuOptions.UpdateContact:
+            ContactServce.UpdateContact();
             break;
 
-        case MenuOptions.ViewProduct:
-            ProductController.ViewProduct();
+        case MenuOptions.ViewContact:
+            ContactServce.ViewContact();
             break;
+
+        case MenuOptions.ViewAllContacts:
+            var contacts = ContactController.GetContacts();
+            UserInterface.ShowContactTable(contacts);           
+            break;
+
+        case MenuOptions.Quit:
+            ExitProgram();
+            break;
+
     }
+}
+
+void ExitProgram()
+{
+    isAppRunning = false;
+    Environment.Exit(0);
 }
 
 enum MenuOptions
 {
-    AddProduct,
-    DeleteProduct,
-    UpdateProduct,
-    ViewAllProducts,
-    ViewProduct,
+    AddContact,
+    DeleteContact,
+    UpdateContact,    
+    ViewContact,
+    ViewAllContacts,
     Quit
 }
