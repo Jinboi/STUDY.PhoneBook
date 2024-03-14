@@ -4,6 +4,23 @@ namespace PhoneBook;
 
 internal class UserInterface
 {
+    internal static void ShowContact(Contact contact)
+    {
+        var panel = new Panel($@"
+        Id: {contact.Id}
+        Name: {contact.Name}
+        Email: {contact.Email}
+        PhoneNumber: {contact.PhoneNumber}
+        ");
+        panel.Header = new PanelHeader("Contact Info");
+        panel.Padding = new Padding(2, 2, 2, 2);
+
+        AnsiConsole.Write(panel);
+
+        Helper.waitUserToPressAnyKeyToContinue();
+
+    }
+
     static internal void ShowContactTable(List<Contact> contacts)
     {
         var table = new Table();
@@ -19,7 +36,10 @@ internal class UserInterface
 
         AnsiConsole.Write(table);
 
-        Console.WriteLine("Enter any key to continue");
-        Console.ReadLine();
+        Helper.waitUserToPressAnyKeyToContinue();
+
+        
     }
+
+
 }

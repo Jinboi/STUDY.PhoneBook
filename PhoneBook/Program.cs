@@ -29,7 +29,8 @@ while (isAppRunning)
             break;
 
         case MenuOptions.ViewContact:
-            ContactServce.ViewContact();
+            var contact = ContactServce.GetContactOptionInput();
+            UserInterface.ShowContact(contact);
             break;
 
         case MenuOptions.ViewAllContacts:

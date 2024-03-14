@@ -62,3 +62,11 @@ Todos for Phonebook Project:
 10. Review and Feedback:
     - Have someone review your code for any potential issues or areas of improvement.
     - Gather feedback from users to identify any usability issues or desired features.
+
+
+____ 
+March 13 - 2024 Update:
+
+Almost done - just have to add validation to the updateContact method and then clean code.
+This is finished a lot sooner than I thought.
+Progressing fast. Feels good.

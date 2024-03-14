@@ -11,7 +11,7 @@ using PhoneBook;
 namespace PhoneBook.Migrations
 {
     [DbContext(typeof(ContactContext))]
-    [Migration("20240313021748_initial-create")]
+    [Migration("20240314031636_initial-create")]
     partial class initialcreate
     {
         /// <inheritdoc />
