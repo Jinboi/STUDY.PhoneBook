@@ -47,4 +47,36 @@ internal class Validation
         return contactEmail.Contains("@");
     }
 
+    internal static string GetValidEmailToUpdateFromUser(string contactEmail)
+    {        
+        do
+        {
+            if (!isValidEmail(contactEmail))
+            {
+                Console.WriteLine("Invalid email format. Please enter a valid email address.");
+                contactEmail = AnsiConsole.Ask<string>("Contact's Email:");
+            }
+            
+        } while (!isValidEmail(contactEmail));
+
+        return contactEmail;
+    }
+
+
+
+    internal static string GetValidPhoneNumberToUpdateFromUser(string contactPhoneNumber)
+    {        
+        do
+        {            
+            if (!IsValidPhoneNumber(contactPhoneNumber))
+            {
+                Console.WriteLine($"Invalid PhoneNumber format. Please enter a valid PhoneNumber. Enter 10 digit number without any space or - or _");
+                contactPhoneNumber = AnsiConsole.Ask<string>("Contact's PhoneNumber:");
+            }
+            
+        } while (!IsValidPhoneNumber(contactPhoneNumber));
+
+        return contactPhoneNumber;
+    }
+
 }

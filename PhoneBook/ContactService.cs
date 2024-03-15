@@ -36,20 +36,26 @@ internal class ContactServce
     {
         var contact = GetContactOptionInput();
 
-
         contact.Name = AnsiConsole.Confirm("Update name?")
             ? AnsiConsole.Ask<string>("Contact's new name:")
             : contact.Name;
 
+        string contactEmail;
 
-        contact.Email = AnsiConsole.Confirm("Update Email?")
+        contactEmail = AnsiConsole.Confirm("Update Email?")
             ? AnsiConsole.Ask<string>("Contact's new Email:")
             : contact.Email;
 
-        contact.PhoneNumber = AnsiConsole.Confirm("Update PhoneNumber?")
+        string validEmail = Validation.GetValidEmailToUpdateFromUser(contactEmail);
+
+        string contactPhoneNumber;
+
+        contactPhoneNumber = AnsiConsole.Confirm("Update PhoneNumber?")
             ? AnsiConsole.Ask<string>("Contact's new PhoneNumber:")
             : contact.PhoneNumber;
-        
+
+        string validPhoneNumber = Validation.GetValidPhoneNumberToUpdateFromUser(contactPhoneNumber);
+
         ContactController.UpdateContact(contact);
 
         Helper.waitUserToPressAnyKeyToContinue();
