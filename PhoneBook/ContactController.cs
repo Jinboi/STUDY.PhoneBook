@@ -1,8 +1,4 @@
-﻿using PhoneBook;
-using Microsoft.EntityFrameworkCore;
-
-namespace PhoneBook;
-
+﻿namespace PhoneBook;
 internal class ContactController
 {
     internal static void InsertContactInDatabase(Contact contact)
@@ -20,7 +16,6 @@ internal class ContactController
 
         return contacts;
     }
-
     internal static Contact GetContactById(int id)
     {
         using var db = new ContactContext();
@@ -29,7 +24,6 @@ internal class ContactController
 
         return contact;
     }
-
     internal static void DeleteContact(Contact contact)
     {
         using var db = new ContactContext();
@@ -37,7 +31,6 @@ internal class ContactController
 
         db.SaveChanges();
     }
-
     internal static void UpdateContact(Contact contact)
     {
         using var db = new ContactContext();

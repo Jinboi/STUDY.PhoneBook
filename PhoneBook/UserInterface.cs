@@ -1,7 +1,6 @@
 ﻿using Spectre.Console;
 
 namespace PhoneBook;
-
 internal class UserInterface
 {
     internal static void ShowContact(Contact contact)
@@ -18,9 +17,7 @@ internal class UserInterface
         AnsiConsole.Write(panel);
 
         Helper.waitUserToPressAnyKeyToContinue();
-
     }
-
     static internal void ShowContactTable(List<Contact> contacts)
     {
         var table = new Table();
@@ -36,10 +33,6 @@ internal class UserInterface
 
         AnsiConsole.Write(table);
 
-        Helper.waitUserToPressAnyKeyToContinue();
-
-        
+        Helper.waitUserToPressAnyKeyToContinue();        
     }
-
-
 }

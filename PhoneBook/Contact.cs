@@ -1,5 +1,4 @@
 ﻿namespace PhoneBook;
-
 internal class Contact
 {
     public int Id { get; set; }

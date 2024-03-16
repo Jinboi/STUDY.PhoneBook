@@ -1,13 +1,11 @@
 ﻿using Spectre.Console;
 
 namespace PhoneBook;
-
 internal class ContactServce
 {
     internal static void AddContact()
     {
         var contact = new Contact();
-
 
         contact.Name = AnsiConsole.Ask<string>("Contact's name:");
 
@@ -23,7 +21,6 @@ internal class ContactServce
 
         Helper.waitUserToPressAnyKeyToContinue();
     }    
-
     internal static void DeleteContact()
     {
         var contact = GetContactOptionInput();
@@ -31,7 +28,6 @@ internal class ContactServce
 
         Helper.waitUserToPressAnyKeyToContinue();
     }
-
     internal static void UpdateContact()
     {
         var contact = GetContactOptionInput();
@@ -60,11 +56,6 @@ internal class ContactServce
 
         Helper.waitUserToPressAnyKeyToContinue();
     }
-
-    internal static void ViewContact()
-    {
-        throw new NotImplementedException();
-    }
     static internal Contact GetContactOptionInput()
     {
         var contacts = ContactController.GetContacts();
@@ -76,8 +67,5 @@ internal class ContactServce
         var contact = ContactController.GetContactById(id);
 
         return contact;
-
-    }
-
-    
+    }        
 }

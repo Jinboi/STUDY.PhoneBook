@@ -1,5 +1,4 @@
 ﻿namespace PhoneBook;
-
 internal class Helper
 {
     internal static void waitUserToPressAnyKeyToContinue()

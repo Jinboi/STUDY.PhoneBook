@@ -41,7 +41,6 @@ while (isAppRunning)
         case MenuOptions.Quit:
             ExitProgram();
             break;
-
     }
 }
 
@@ -50,7 +49,6 @@ void ExitProgram()
     isAppRunning = false;
     Environment.Exit(0);
 }
-
 enum MenuOptions
 {
     AddContact,

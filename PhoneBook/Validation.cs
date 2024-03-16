@@ -1,10 +1,8 @@
 ﻿using Spectre.Console;
 
 namespace PhoneBook;
-
 internal class Validation
 {
-
     internal static string GetValidPhoneNumberFromUser()
     {
         string contactPhoneNumber;
@@ -14,18 +12,18 @@ internal class Validation
             contactPhoneNumber = AnsiConsole.Ask<string>("Contact's PhoneNumber:");
             if (!IsValidPhoneNumber(contactPhoneNumber))
             {
-                Console.WriteLine($"Invalid PhoneNumber format. Please enter a valid PhoneNumber. Enter 10 digit number without any space or - or _");
+                Console.WriteLine(@$"
+                    Invalid PhoneNumber format. Please enter a valid PhoneNumber.
+                    Enter 10 digit number without any space or - or _");
             }
         } while (!IsValidPhoneNumber(contactPhoneNumber));
 
         return contactPhoneNumber;
     }
-
     internal static bool IsValidPhoneNumber(string phoneNumber)
     {
         return phoneNumber.Length == 10 && long.TryParse(phoneNumber, out _);
     }
-
     internal static string GetValidEmailFromUser()
     {
         string contactEmail;
@@ -46,7 +44,6 @@ internal class Validation
     {
         return contactEmail.Contains("@");
     }
-
     internal static string GetValidEmailToUpdateFromUser(string contactEmail)
     {        
         do
@@ -61,16 +58,16 @@ internal class Validation
 
         return contactEmail;
     }
-
-
-
     internal static string GetValidPhoneNumberToUpdateFromUser(string contactPhoneNumber)
     {        
         do
         {            
             if (!IsValidPhoneNumber(contactPhoneNumber))
             {
-                Console.WriteLine($"Invalid PhoneNumber format. Please enter a valid PhoneNumber. Enter 10 digit number without any space or - or _");
+                Console.WriteLine(@$"
+                    Invalid PhoneNumber format. 
+                    Please enter a valid PhoneNumber. 
+            `       Enter 10 digit number without any space or - or _");
                 contactPhoneNumber = AnsiConsole.Ask<string>("Contact's PhoneNumber:");
             }
             
@@ -78,5 +75,4 @@ internal class Validation
 
         return contactPhoneNumber;
     }
-
 }
