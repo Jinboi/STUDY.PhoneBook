@@ -64,10 +64,10 @@ internal class Validation
         {            
             if (!IsValidPhoneNumber(contactPhoneNumber))
             {
-                Console.WriteLine(@$"
+                Console.WriteLine(@$"       
                     Invalid PhoneNumber format. 
                     Please enter a valid PhoneNumber. 
-            `       Enter 10 digit number without any space or - or _");
+                    Enter 10 digit number without any space or - or _");
                 contactPhoneNumber = AnsiConsole.Ask<string>("Contact's PhoneNumber:");
             }
             

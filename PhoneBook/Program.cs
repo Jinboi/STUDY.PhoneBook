@@ -43,7 +43,6 @@ while (isAppRunning)
             break;
     }
 }
-
 void ExitProgram()
 {
     isAppRunning = false;
