@@ -32,40 +32,44 @@ internal class ContactServce
     {
         var contact = GetContactOptionInput();
 
-        contact.Name = AnsiConsole.Confirm("Update name?")
-            ? AnsiConsole.Ask<string>("Contact's new name:")
-            : contact.Name;
+        if (contact == null)
+        {
+            Console.WriteLine("Can't update as there are no contacts available to update.");
+            Helper.waitUserToPressAnyKeyToContinue();
+        }
 
-        string contactEmail;
+        else
+        {
+            Helper.AskAndUpdateName(contact);
+            Helper.AskAndUpdateEmail(contact);
+            Helper.AskAndUpdatePhoneNumber(contact);              
 
-        contactEmail = AnsiConsole.Confirm("Update Email?")
-            ? AnsiConsole.Ask<string>("Contact's new Email:")
-            : contact.Email;
+            ContactController.UpdateContact(contact);
 
-        string validEmail = Validation.GetValidEmailToUpdateFromUser(contactEmail);
-
-        string contactPhoneNumber;
-
-        contactPhoneNumber = AnsiConsole.Confirm("Update PhoneNumber?")
-            ? AnsiConsole.Ask<string>("Contact's new PhoneNumber:")
-            : contact.PhoneNumber;
-
-        string validPhoneNumber = Validation.GetValidPhoneNumberToUpdateFromUser(contactPhoneNumber);
-
-        ContactController.UpdateContact(contact);
-
-        Helper.waitUserToPressAnyKeyToContinue();
+            Helper.waitUserToPressAnyKeyToContinue();
+        }
     }
     static internal Contact GetContactOptionInput()
     {
         var contacts = ContactController.GetContacts();
-        var contactsArray = contacts.Select(x => x.Name).ToArray();
-        var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
-            .Title("Choose Contact")
-            .AddChoices(contactsArray));
-        var id = contacts.Single(x => x.Name == option).Id;
-        var contact = ContactController.GetContactById(id);
 
-        return contact;
+        if (contacts.Count == 0)
+        {
+            Console.WriteLine("Passing null as there are no contacts available to update.");
+            return null;
+        }
+
+        else
+        {
+            var contactsArray = contacts.Select(x => x.Name).ToArray();
+            var option = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                .Title("Choose Contact")
+                .AddChoices(contactsArray));
+
+            var id = contacts.Single(x => x.Name == option).Id;
+            var contact = ContactController.GetContactById(id);
+
+            return contact;
+        }
     }        
 }
