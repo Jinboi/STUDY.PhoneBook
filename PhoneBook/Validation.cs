@@ -1,4 +1,5 @@
 ﻿using Spectre.Console;
+using System.Text.RegularExpressions;
 
 namespace PhoneBook;
 internal class Validation
@@ -22,7 +23,8 @@ internal class Validation
     }
     internal static bool IsValidPhoneNumber(string phoneNumber)
     {
-        return phoneNumber.Length == 10 && long.TryParse(phoneNumber, out _);
+        string phonePattern = @"^\d{10}$";
+        return Regex.IsMatch(phoneNumber, phonePattern);
     }
     internal static string GetValidEmailFromUser()
     {
@@ -42,7 +44,8 @@ internal class Validation
 
     internal static bool isValidEmail(string contactEmail)
     {
-        return contactEmail.Contains("@");
+        string emailPattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$";
+        return Regex.IsMatch(contactEmail, emailPattern);
     }
     internal static string GetValidEmailToUpdateFromUser(string contactEmail)
     {        
